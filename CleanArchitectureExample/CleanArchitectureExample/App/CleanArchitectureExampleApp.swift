@@ -11,7 +11,15 @@ import SwiftUI
 struct CleanArchitectureExampleApp: App {
     var body: some Scene {
         WindowGroup {
-            UserListView()
+            UserListView(
+                viewModel: UserListVIewModel(
+                    fetchUserUserCase: FetchUserUseCase(
+                        repository: UserRepositoryImpl(
+                            remoteDataSource: UserRemoteDataSource()
+                        )
+                    )
+                )
+            )
         }
     }
 }
