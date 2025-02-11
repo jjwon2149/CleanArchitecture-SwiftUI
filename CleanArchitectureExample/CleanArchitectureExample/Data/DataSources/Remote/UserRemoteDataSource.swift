@@ -9,8 +9,9 @@ import Foundation
 import Combine
 
 class UserRemoteDataSource {
+    
     func fetchUsers() -> AnyPublisher<[User], Error> {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else {
+        guard let url = URL(string: Endpoints.users) else {
             return Fail(error: URLError(.badURL))
                 .eraseToAnyPublisher()
         }
